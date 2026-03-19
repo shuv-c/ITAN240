@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evergreen Café - Official Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="#1a3317"/>
+            <circle cx="50" cy="50" r="44" fill="none" stroke="#7ec87a" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <polygon points="50,18 40,38 60,38" fill="#7ec87a"/>
+            <polygon points="50,26 37,50 63,50" fill="#a8d5a2"/>
+            <polygon points="50,34 34,60 66,60" fill="#7ec87a"/>
+            <rect x="45" y="60" width="10" height="9" fill="#6b4226"/>
+            <text x="50" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="bold" fill="#e8f5e2" letter-spacing="1.5">EVERGREEN</text>
+            <text x="50" y="89" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#7ec87a" letter-spacing="2">CAFÉ</text>
+        </svg>
+        <h1>EVERGREEN CAFÉ</h1>
+        <p class="subtitle">student-designed and student-run</p>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="menuSearch" placeholder="🔍 Search menu (e.g. Mocha)..." onkeyup="filterMenu()">
+        </div>
+
+        <table id="menuTable">
+            <thead>
+                <tr>
+                    <th>Menu Item &amp; Description</th>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>L</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cat-header"><td colspan="4">☕ HOT DRINKS</td></tr>
+                <tr><td><strong>Fresh Brewed Coffee</strong><br><small>House blend</small></td><td><button class="price-btn" onclick="add('Coffee (S)', 2.30)">$2.30</button></td><td><button class="price-btn" onclick="add('Coffee (M)', 2.75)">$2.75</button></td><td><button class="price-btn" onclick="add('Coffee (L)', 3.00)">$3.00</button></td></tr>
+                <tr><td><strong>Americano</strong><br><small>Espresso &amp; hot water</small></td><td><button class="price-btn" onclick="add('Am. (S)', 2.90)">$2.90</button></td><td><button class="price-btn" onclick="add('Am. (M)', 3.30)">$3.30</button></td><td><button class="price-btn" onclick="add('Am. (L)', 3.50)">$3.50</button></td></tr>
+                <tr><td><strong>Cappuccino / Latte</strong><br><small>Espresso &amp; steamed milk</small></td><td><button class="price-btn" onclick="add('Latte (S)', 3.50)">$3.50</button></td><td><button class="price-btn" onclick="add('Latte (M)', 4.25)">$4.25</button></td><td><button class="price-btn" onclick="add('Latte (L)', 4.55)">$4.55</button></td></tr>
+                <tr><td><strong>Flat White</strong><br><small>Espresso &amp; microfoam</small></td><td><button class="price-btn" onclick="add('Flat White', 3.50)">$3.50</button></td><td class="na">—</td><td class="na">—</td></tr>
+                <tr><td><strong>Chai Latte</strong><br><small>Spiced tea &amp; milk</small></td><td><button class="price-btn" onclick="add('Chai (S)', 3.65)">$3.65</button></td><td><button class="price-btn" onclick="add('Chai (M)', 4.50)">$4.50</button></td><td><button class="price-btn" onclick="add('Chai (L)', 4.75)">$4.75</button></td></tr>
+                <tr><td><strong>Caramel Macchiato</strong><br><small>Vanilla &amp; caramel</small></td><td><button class="price-btn" onclick="add('C.Mac (S)', 4.25)">$4.25</button></td><td><button class="price-btn" onclick="add('C.Mac (M)', 4.75)">$4.75</button></td><td><button class="price-btn" onclick="add('C.Mac (L)', 5.00)">$5.00</button></td></tr>
+                <tr><td><strong>Hot Chocolate</strong><br><small>Chocolate &amp; milk</small></td><td><button class="price-btn" onclick="add('Cocoa (S)', 2.80)">$2.80</button></td><td><button class="price-btn" onclick="add('Cocoa (M)', 3.25)">$3.25</button></td><td><button class="price-btn" onclick="add('Cocoa (L)', 3.50)">$3.50</button></td></tr>
+
+                <tr class="cat-header"><td colspan="4">🧊 ICED DRINKS</td></tr>
+                <tr><td><strong>Iced Coffee</strong><br><small>Chilled house blend</small></td><td><button class="price-btn" onclick="add('Iced Coffee (S)', 2.35)">$2.35</button></td><td><button class="price-btn" onclick="add('Iced Coffee (M)', 2.80)">$2.80</button></td><td><button class="price-btn" onclick="add('Iced Coffee (L)', 3.25)">$3.25</button></td></tr>
+                <tr><td><strong>Iced Latte</strong><br><small>Espresso &amp; milk over ice</small></td><td><button class="price-btn" onclick="add('Iced Latte (S)', 3.75)">$3.75</button></td><td><button class="price-btn" onclick="add('Iced Latte (M)', 4.25)">$4.25</button></td><td><button class="price-btn" onclick="add('Iced Latte (L)', 4.75)">$4.75</button></td></tr>
+                <tr><td><strong>Iced Herbal Tea</strong><br><small>Black, Zen, or Passion</small></td><td><button class="price-btn" onclick="add('Iced Tea (S)', 2.25)">$2.25</button></td><td><button class="price-btn" onclick="add('Iced Tea (M)', 2.75)">$2.75</button></td><td><button class="price-btn" onclick="add('Iced Tea (L)', 3.25)">$3.25</button></td></tr>
+
+                <tr class="cat-header"><td colspan="4">🥤 FRAPPUCCINO</td></tr>
+                <tr><td><strong>Frappuccino</strong><br><small>Blended coffee drink</small></td><td class="na">—</td><td><button class="price-btn" onclick="add('Frapp (M)', 5.00)">$5.00</button></td><td class="na">—</td></tr>
+            </tbody>
+        </table>
+
+        <div class="checkout-section">
+            <h3>🛒 Your Order</h3>
+            <div id="cartList">No items selected.</div>
+            <p class="total-line">Total: $<span id="totalPrice">0.00</span></p>
+            <button class="main-btn" id="checkoutBtn" onclick="checkout()">CHECKOUT</button>
+
+            <div id="receiptBox" style="display:none;">
+                <p>Register Code:</p>
+                <span class="register-code" id="orderCode">#0000</span>
+                <p><small>Pay later at the register.</small></p>
+                <button class="clear-btn" onclick="clearAll()">Clear Order</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Evergreen Café 2026</p>
+        <p>student-designed and student-run</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        function filterMenu() {
+            let val = document.getElementById('menuSearch').value.toUpperCase();
+            let rows = document.querySelectorAll('#menuTable tbody tr:not(.cat-header)');
+            rows.forEach(r => r.style.display = r.cells[0].innerText.toUpperCase().includes(val) ? "" : "none");
+        }
+        function add(n, p) { cart.push({n, p}); update(); }
+        function update() {
+            const list = document.getElementById('cartList');
+            list.innerHTML = cart.length ? cart.map(i => `<div>${i.n} - $${i.p.toFixed(2)}</div>`).join('') : "No items selected.";
+            document.getElementById('totalPrice').innerText = cart.reduce((s, i) => s + i.p, 0).toFixed(2);
+        }
+        function checkout() {
+            if(!cart.length) return alert("Add items first!");
+            document.getElementById('orderCode').innerText = "EC-" + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('receiptBox').style.display = "block";
+            document.getElementById('checkoutBtn').style.display = "none";
+        }
+        function clearAll() {
+            cart = []; update();
+            document.getElementById('receiptBox').style.display = "none";
+            document.getElementById('checkoutBtn').style.display = "block";
+        }
+    </script>
+</body>
+</html>
